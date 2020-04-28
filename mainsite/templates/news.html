@@ -6,39 +6,43 @@
     <h1>  {{ title }}   </h1>
 </div>
 
+
+
 <div class="row">
 
     <div class="col-md-9">
         <div class="tab-content">
             
-            {% for article in articles %}
-                <div id="{{ article.id }}" class="tab-pane fade
+            {% for article_no,title,content,image_url  in articles %}
+            
+                <div id="{{ article_no }}" class="tab-pane fade
                    {% if forloop.counter0 == 0 %}
                       in active 
                    {% endif %}">
-                    <h3> {{ article.title }} </h3>
-                    <p> {{ article.content }} </p>
+                    <h3> {{  title }} </h3>
+                    <image src="{{  image_url }}" alt="NoImgage">
+                       
+                    <p> {{  content }} </p>
                 </div>
 
             {% endfor %}
-
+           
         </div>
+        
+      
+       
     </div>
-
-    <div class="col-md-3">
-        <div class="tab-content">
+    {% for i,j,k,l in articles %}
+<p>  {{ i }} </p>
+{% endfor %}
+  
+   <div class="col-md-3">
             <ul class="nav nav-pills nav-stacked">
-                {% for article in articles %}
-                <li  
-                 {% if forloop.counter0 == 0 %}
-                  class="active"
-                 {% endif %}
-                > 
-                    <a data-toggle="pill" href="#{{ article.id }}">{{ article.title }}</a>
-                </li>
+                {% for i in  '0123456789'|make_list %}      
+                    <li> <a data-toggle="pill" href="#{{i}}">Article {{i}}</a> </li>
                 {% endfor %}
             </ul>
-        </div>
+        
     </div>
 
 </div>
